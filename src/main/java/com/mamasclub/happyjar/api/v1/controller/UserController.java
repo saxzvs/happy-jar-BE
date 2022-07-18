@@ -1,7 +1,6 @@
 package com.mamasclub.happyjar.api.v1.controller;
 
 import com.mamasclub.happyjar.api.v1.domain.entity.User;
-import com.mamasclub.happyjar.api.v1.domain.entity.UserID;
 import com.mamasclub.happyjar.api.v1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,21 +25,26 @@ public class UserController {
     }
 
 //    @Operation(description = "회원조회")
-    @GetMapping("/read/{id}")
-    public ResponseEntity<User> readByUserNo(@PathVariable UserID id){
-        return ResponseEntity.ok().body(userService.findByUserId(id).get());
+    @GetMapping("/read/{no}")
+    public ResponseEntity<User> readByNo(@PathVariable int no){
+        return ResponseEntity.ok().body(userService.findByUserNo(no).get());
+    }
+
+    @PostMapping("/readById")
+    public ResponseEntity<User> readById(@RequestBody String userId, String authType){
+        return ResponseEntity.ok().body(userService.findByUserIdAndAuthType(userId, authType).get());
     }
 
 //    @Operation(description = "회원정보수정")
     @PutMapping("/update")
-    public ResponseEntity<User> update(@RequestParam User user){
+    public ResponseEntity<User> update(@RequestBody User user){
         return ResponseEntity.ok().body(userService.update(user));
     }
 
 //    @Operation(description = "회원정보삭제")
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable UserID id){
-       userService.delete(id);
+    @DeleteMapping("/delete/{no}")
+    public void delete(@PathVariable int no){
+       userService.delete(no);
     }
 
 }

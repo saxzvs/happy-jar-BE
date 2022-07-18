@@ -1,28 +1,27 @@
 package com.mamasclub.happyjar.api.v1.domain.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "USER_INFO")
+@AllArgsConstructor
 @Getter
 @Setter
+@Entity
 @DynamicInsert
 @DynamicUpdate
-@IdClass(UserID.class)
+@Table(name="USER_INFO"
+    , uniqueConstraints = {
+        @UniqueConstraint(name="USER_INFO_ID_UNIQUE", columnNames = {"USER_ID", "AUTH_TYPE"})})
 public class User extends CommonEntity {
-
-    @Id private String userId;
-    @Id private String authType;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userNo;
+    @Column(name="USER_ID") private String userId;
+    @Column(name="AUTH_TYPE") private String authType;
     @Column private String userPw;
     @Column private String userNm;
     @Column private String email;

@@ -26,9 +26,9 @@ public class CommonEntity {
     private String createBy;
 
     @LastModifiedDate
-    @Column(nullable = false)
+    @Column
     private LocalDateTime updateAt;
 
     @LastModifiedBy
-    private String updatedBy;
+    private String updateBy;
 }

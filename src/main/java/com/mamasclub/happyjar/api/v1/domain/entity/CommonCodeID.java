@@ -6,15 +6,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class UserID implements Serializable {
-    private String userId;
-    private String authType;
+public class CommonCodeID implements Serializable {
+    private String baseCode;
+    private String subCode;
 
 }
