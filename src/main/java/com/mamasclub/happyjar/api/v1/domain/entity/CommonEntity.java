@@ -23,6 +23,7 @@ public class CommonEntity {
     private LocalDateTime createAt;
 
     @CreatedBy
+    @Column(updatable = false, nullable = false)
     private String createBy;
 
     @LastModifiedDate

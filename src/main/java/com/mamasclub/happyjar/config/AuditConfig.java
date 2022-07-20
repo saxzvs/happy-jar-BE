@@ -15,6 +15,7 @@ public class AuditConfig implements AuditorAware<String> {
     public Optional<String> getCurrentAuditor(){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String userId = request.getHeader("uid");
+        if(userId == null) userId = "SWAGGER_TEST";
         return Optional.of(userId);
     }
 }
