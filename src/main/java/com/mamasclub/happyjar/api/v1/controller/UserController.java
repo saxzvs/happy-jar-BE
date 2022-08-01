@@ -3,6 +3,7 @@ package com.mamasclub.happyjar.api.v1.controller;
 import com.mamasclub.happyjar.api.v1.domain.entity.User;
 import com.mamasclub.happyjar.api.v1.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/user")
 @Log4j2
+@RequiredArgsConstructor
 public class UserController {
 
-    private UserService userService;
-
-    @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
-    }
+    private final UserService userService;
 
     @Operation(description = "회원가입")
     @PostMapping("/create")

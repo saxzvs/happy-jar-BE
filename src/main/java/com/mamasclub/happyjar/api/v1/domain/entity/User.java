@@ -17,7 +17,7 @@ import javax.persistence.*;
 @DynamicUpdate
 @Table(name="USER_INFO"
     , uniqueConstraints = {
-        @UniqueConstraint(name="USER_INFO_ID_UNIQUE", columnNames = {"USER_ID", "AUTH_TYPE"})})
+        @UniqueConstraint(name="user_info_id_unique", columnNames = {"USER_ID", "AUTH_TYPE"})})
 @ApiModel(value = "유저 정보", description = "사용자 정보 Entity Model")
 public class User extends CommonEntity {
     @Id
