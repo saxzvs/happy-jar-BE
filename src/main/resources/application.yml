@@ -8,6 +8,10 @@ spring:
     username: happyjar
     password: mamasclub
 
+#    url: jdbc:postgresql://51.13.127.233:5432/happyjar
+#    username: happyjar
+#    password: mamasclub@1
+
   jpa:
     hibernate:
       format-sql: true
